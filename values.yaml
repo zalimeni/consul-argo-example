@@ -1,0 +1,32 @@
+global:
+  name: consul
+  datacenter: dc1
+  image: docker.io/hashicorp/consul:1.19.1 
+  imageK8S: docker.io/hashicorp/consul-k8s-control-plane:1.5.1
+  imageConsulDataplane: docker.io/hashicorp/consul-dataplane:1.5.1
+  imagePullSecrets:
+    - name: pull-secret
+  openshift:
+    enabled: true
+    
+server:
+  replicas: 1
+  bootstrapExpect: 1
+  disruptionBudget:
+    enabled: true
+    maxUnavailable: 0
+    
+ui:
+  enabled: true 
+    
+connectInject:
+  enabled: true
+  default: true
+  cni:
+    enabled: true
+    logLevel: info
+    multus: true
+    cniBinDir: /var/lib/cni/bin
+    cniNetDir: /etc/kubernetes/cni/net.d
+
+
