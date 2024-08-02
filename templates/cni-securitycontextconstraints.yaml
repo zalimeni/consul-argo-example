@@ -39,6 +39,8 @@ seLinuxContext:
 supplementalGroups:
   type: MustRunAs
 users: []
+# This list must be in alphabetical order to match the post-reconcile order enforced by OpenShift admission hooks.
+# Order supports change detection by third-party diff tools like ArgoCD.
 volumes:
 - configMap
 - downwardAPI
