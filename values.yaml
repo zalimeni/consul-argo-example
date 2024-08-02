@@ -4,9 +4,11 @@ global:
   image: docker.io/hashicorp/consul:1.19.1 
   imageK8S: docker.io/hashicorp/consul-k8s-control-plane:1.5.1
   imageConsulDataplane: docker.io/hashicorp/consul-dataplane:1.5.1
-  imagePullSecrets:
-    - name: pull-secret
+  #imagePullSecrets:
+  #- name: pull-secret
   openshift:
+    enabled: true
+  argocd:
     enabled: true
     
 server:
